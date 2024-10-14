@@ -1,0 +1,6 @@
+@AutomatedForm.Api_HostAddress = http://localhost:5147
+
+GET {{AutomatedForm.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

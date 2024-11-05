@@ -19,6 +19,12 @@ builder.Services.AddAutoMapper(typeof(MappingProfile));
 builder.Services.AddAutoMapper(typeof(ApiMappingProfile));
 builder.Services.AddScoped<ITblBranchRepository, TblBranchRepository>();
 builder.Services.AddScoped<ITblBranchService, BranchService>();
+builder.Services.AddScoped<ITblMuniRepository, TblMuniRepository>();
+builder.Services.AddScoped<ITblMuniService, MuniService>();
+builder.Services.AddScoped<ITblFactoryRepository, TblFactoryRepository>();
+builder.Services.AddScoped<ITblFactoryService, FactoryService>();
+builder.Services.AddScoped<ITransMuniFactoryRepository, TransMuniFactoryRepository>();
+builder.Services.AddScoped<ITransMuniFactoryService, MuniFactoryService>();
 builder.Services.AddDbContext<DataContext>();
 
 

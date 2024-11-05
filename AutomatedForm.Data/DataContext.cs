@@ -14,12 +14,53 @@ namespace AutomatedForm.Data
     {
         //public DbSet<Form> Forms { get; set; }
         public DbSet<TblBranch> TblBranch{ get; set; }
+        public DbSet<TblTemplate> TblTemplate { get; set; }
+        public DbSet<TblMuni> TblMuni { get; set; }
+        public DbSet<TblFactory> TblFactory { get; set; }
+        public DbSet<TransMuniFactory> TransMuniFactory { get; set; }
+
+
+
+
         public DbSet<TblUser> Users { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<TblBranch>()
                 .HasKey(pe => new { pe.BranchId,});
                 base.OnModelCreating(modelBuilder);
+            
+            modelBuilder.Entity<TblTemplate>()
+                           .HasKey(pe => new { pe.TemplateId,});
+                           base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<TblMuni>()
+                                       .HasKey(pe => new { pe.MuniId,});
+                                       base.OnModelCreating(modelBuilder);
+
+
+            modelBuilder.Entity<TblFactory>()
+                                      .HasKey(pe => new { pe.FactoryId, });
+            base.OnModelCreating(modelBuilder);
+
+modelBuilder.Entity<TransMuniFactory>()
+                                      .HasKey(pe => new { pe.TransId, });
+            base.OnModelCreating(modelBuilder);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             modelBuilder.Entity<TblUser>()
                 .HasMany(u => u.TransSysLogUserCreateds)

@@ -15,6 +15,10 @@ namespace AutomatedForm.Core
         public MappingProfile()
         {
             CreateMap<BranchDTO, TblBranch>().ReverseMap();
+            CreateMap<TemplateDTO, TblTemplate>().ReverseMap();
+            CreateMap<MuniDTO, TblMuni>().ReverseMap();
+            CreateMap<FactoryDTO, TblFactory>().ReverseMap();
+            CreateMap<MuniFactoryDTO, TransMuniFactory>().ReverseMap();
         }
     }
 }

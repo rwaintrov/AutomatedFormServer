@@ -8,13 +8,13 @@ namespace AutomatedForm.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BranchController : ControllerBase
+    public class MuniFactoryController : ControllerBase
     {
-        private readonly ITblBranchService _branchService;
+        private readonly ITransMuniFactoryService _muniFactoryService;
         private readonly IMapper _mapper;
-        public BranchController(ITblBranchService branchService,  IMapper mapper)
+        public MuniFactoryController(ITransMuniFactoryService muniFactoryService, IMapper mapper)
         {
-            _branchService = branchService;
+            _muniFactoryService = muniFactoryService;
             _mapper = mapper;
         }
 
@@ -29,15 +29,14 @@ namespace AutomatedForm.Api.Controllers
         //}
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BranchDTO>>> Get()
+        public async Task<ActionResult<IEnumerable<MuniFactoryDTO>>> Get()
         {
             // קבלת רשימת הסניפים ישירות מהשירות
-            var list = await _branchService.GetBranchesAsync();
+            var list = await _muniFactoryService.GetMuniFactorysAsync();
 
             // החזרת הרשימה כפי שהיא
             return Ok(list);
         }
-
 
     }
 }

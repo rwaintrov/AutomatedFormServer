@@ -19,14 +19,6 @@ namespace AutomatedForm.Api.Controllers
         }
 
 
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<BranchDTO>>> Get()
-        //{
-        //    var list = await _branchService.GetBranchesAsync();
-        //    var list1 = list.Select(d => _mapper.Map<BranchDTO>(d));
-        //    // להחזיר רק את העובדים שהדרוג הגבוה ביותר שלהם הוא שווה או פחות מהדרוג הגבוה של מבקש הבקשה
-        //    return Ok(list1);
-        //}
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<MuniFactoryDTO>>> Get()
@@ -37,6 +29,17 @@ namespace AutomatedForm.Api.Controllers
             // החזרת הרשימה כפי שהיא
             return Ok(list);
         }
+     
+        [HttpGet("factories-by-muni/{id}")]
+        public async Task<ActionResult<IEnumerable<FactoryDTO>>> GetFactoriesByMuniIdAsync(int id)
+        {
+            // שליפת רשימת המפעלים הקשורים ל-MuniId מסוים
+            var factories = await _muniFactoryService.GetFactoriesByMuniIdAsync(id);
 
+            // מיפוי הרשימה ל-DTO להחזרה
+            var factoryDTOs = factories.Select(f => _mapper.Map<FactoryDTO>(f));
+
+            return Ok(factoryDTOs);
+        }
     }
 }

@@ -13,8 +13,6 @@ namespace AutomatedForm.Api
             CreateMap<MuniPostModel, TblMuni>().ReverseMap();
             CreateMap<FactoryPostModel, TblFactory>().ReverseMap();
             CreateMap<MuniFactoryPostModel, TransMuniFactory>().ReverseMap();
-
-
         }
     }
 }

@@ -20,5 +20,10 @@ namespace AutomatedForm.Service
         {
             return await _muniFactoryRepository.GetMuniFactorysAsync();
         }
+      
+        public async Task<IEnumerable<TblFactory>> GetFactoriesByMuniIdAsync(int id)
+        {
+            return await _muniFactoryRepository.GetFactoriesByMuniIdAsync(id);
+        }
     }
 }

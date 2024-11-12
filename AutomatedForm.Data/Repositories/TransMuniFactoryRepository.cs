@@ -26,13 +26,23 @@ namespace AutomatedForm.Data.Repositories
         {
             return await _context.TransMuniFactory.ToListAsync();
         } 
-        public async Task<IEnumerable<TransMuniFactory>> GetMuniFactorysByIdMuniAsync(int id)
+  
+        public async Task<IEnumerable<TblFactory>> GetFactoriesByMuniIdAsync(int muniId)
         {
-            //return await _context.TransMuniFactory.ToListAsync();
-            return await _context.TransMuniFactory
-        .Where(obj => obj.MuniId == id)
-        .ToListAsync();
-        }
+            // שליפת כל השורות בטבלת MUNIFACTORY עם muniId מתאים
+            var muniFactories = await _context.TransMuniFactory
+                                               .Where(mf => mf.MuniId == muniId)
+                                               .ToListAsync();
 
+            // יצירת רשימת factoryId
+            var factoryIds = muniFactories.Select(mf => mf.FactoryId).ToList();
+
+            // שליפת נתונים מטבלת FACTORY לפי factoryId
+            var factories = await _context.TblFactory
+                                           .Where(f => factoryIds.Contains(f.FactoryId))
+                                           .ToListAsync();
+
+            return factories;
+        }
     }
 }

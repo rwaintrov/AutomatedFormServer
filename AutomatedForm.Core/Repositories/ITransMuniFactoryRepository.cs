@@ -10,6 +10,6 @@ namespace AutomatedForm.Core.Repositories
     public interface ITransMuniFactoryRepository
     {
         Task<IEnumerable<TransMuniFactory>> GetMuniFactorysAsync();
-        Task<IEnumerable<TransMuniFactory>> GetMuniFactorysByIdMuniAsync(int id);
+        Task<IEnumerable<TblFactory>> GetFactoriesByMuniIdAsync(int id);
     }
 }

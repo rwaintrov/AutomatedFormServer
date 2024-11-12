@@ -10,6 +10,7 @@ namespace AutomatedForm.Core.Services
     public interface ITransMuniFactoryService
     {
         Task<IEnumerable<TransMuniFactory>> GetMuniFactorysAsync();
-        Task<IEnumerable<TransMuniFactory>> GetMuniFactorysByIdMuniAsync(int id);
+        Task<IEnumerable<TblFactory>> GetFactoriesByMuniIdAsync(int id);
+
     }
 }

@@ -27,8 +27,20 @@ builder.Services.AddScoped<ITransMuniFactoryRepository, TransMuniFactoryReposito
 builder.Services.AddScoped<ITransMuniFactoryService, MuniFactoryService>();
 builder.Services.AddDbContext<DataContext>();
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAngularApp",
+        policy => policy.WithOrigins("http://localhost:52523") // כתובת האפליקציה של Angular
+                        .AllowAnyMethod()
+                        .AllowAnyHeader());
+});
 
 var app = builder.Build();
+
+// שימוש במדיניות CORS
+app.UseCors("AllowAngularApp");
+
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

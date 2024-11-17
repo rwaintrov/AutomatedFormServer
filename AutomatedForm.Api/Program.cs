@@ -25,6 +25,9 @@ builder.Services.AddScoped<ITblFactoryRepository, TblFactoryRepository>();
 builder.Services.AddScoped<ITblFactoryService, FactoryService>();
 builder.Services.AddScoped<ITransMuniFactoryRepository, TransMuniFactoryRepository>();
 builder.Services.AddScoped<ITransMuniFactoryService, MuniFactoryService>();
+builder.Services.AddTransient<ITblTemplateRepository, TblTemplateRepository>();
+builder.Services.AddTransient<ITblTemplateService, TemplateService>();
+
 builder.Services.AddDbContext<DataContext>();
 
 builder.Services.AddCors(options =>

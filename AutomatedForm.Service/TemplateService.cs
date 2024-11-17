@@ -20,5 +20,10 @@ namespace AutomatedForm.Service
         {
             return await _templateRepository.GetTemplatesAsync();
         }
+
+        public async Task<IEnumerable<TblTemplate>> ReturnWithActions(int muniId)
+        {
+            return await _templateRepository.ReturnWithActions(muniId);
+        }
     }
 }

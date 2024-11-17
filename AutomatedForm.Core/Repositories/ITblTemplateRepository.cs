@@ -10,6 +10,7 @@ namespace AutomatedForm.Core.Repositories
     public interface ITblTemplateRepository
     {
         Task<IEnumerable<TblTemplate>> GetTemplatesAsync();
+        Task<IEnumerable<TblTemplate>> ReturnWithActions(int muniId);
 
     }
 }

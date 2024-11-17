@@ -27,6 +27,12 @@ namespace AutomatedForm.Data.Repositories
             return await _context.TransMuniFactory.ToListAsync();
         } 
   
+
+
+
+
+
+
         public async Task<IEnumerable<TblFactory>> GetFactoriesByMuniIdAsync(int muniId)
         {
             // שליפת כל השורות בטבלת MUNIFACTORY עם muniId מתאים

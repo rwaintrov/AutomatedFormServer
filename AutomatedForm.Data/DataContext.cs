@@ -61,7 +61,6 @@ modelBuilder.Entity<TransMuniFactory>()
 
 
 
-
             modelBuilder.Entity<TblUser>()
                 .HasMany(u => u.TransSysLogUserCreateds)
                 .WithOne(t => t.UserCreated)  // שנה זאת לשם הנכון של המאפיין ב-TransSysLog

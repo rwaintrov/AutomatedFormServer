@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace AutomatedForm.Core.Models;
 
 public partial class TblTemplate
 {
     [Key]
+    [DatabaseGenerated(DatabaseGeneratedOption.Identity)] // יצירת ערכים אוטומטיים
     public int TemplateId { get; set; }
 
     public int? MuniId { get; set; }

@@ -10,6 +10,7 @@ namespace AutomatedForm.Core.Services
     public interface ITblTemplateService
     {
         Task<IEnumerable<TblTemplate>> GetTemplatesAsync();
+        Task<IEnumerable<TblTemplate>> ReturnWithActions(int muniId);
 
     }
 }

@@ -23,39 +23,37 @@ namespace AutomatedForm.Data.Repositories
             _transMuniFactoryRepository = transMuniFactoryRepository;
         }
 
-        public async Task<IEnumerable<TblTemplate>> ReturnWithActions(int muniId)
-        {
-            var res = await _transMuniFactoryRepository.GetFactoriesByMuniIdAsync(muniId);
 
-            if (res == null || !res.Any())
+ 
+public async Task<IEnumerable<TblTemplate>> ReturnWithActions(int muniId)
+        {
+            int templateId = 20;
+            var factories = await _transMuniFactoryRepository.GetFactoriesByMuniIdAsync(muniId);
+
+            if (factories == null || !factories.Any())
             {
                 return Enumerable.Empty<TblTemplate>(); // מחזיר רשימה ריקה אם לא נמצאו מפעלים
             }
 
-            // לוקח את המפעל הראשון
-            var firstFactory = res.First();
-
-            // יוצר מופע חדש של TblTemplate ומכניס את המידע של המפעל הראשון כ-JSON
-            var template = new TblTemplate
+            var templates = factories.Select(factory => new TblTemplate
             {
-                TemplateId=2,
+                TemplateId = ++templateId, // ניתן לשנות אם לכל תבנית נדרש מזהה ייחודי
                 MuniId = muniId,
                 TemplateName = "תבנית עם פרטי מפעל",
                 TemplateJson = JsonConvert.SerializeObject(new
                 {
-                    Factory = firstFactory.FactoryName,
-                    Address = firstFactory.FactoryAddress // מניח שלמפעל יש שדה כתובת
+                    Factory = factory.FactoryName,
+                    Address = factory.FactoryAddress // מניח שלמפעל יש שדה כתובת
                 }),
                 IsActive = true,
                 IsDeleted = false
-            };
+            }).ToList();
 
-            // שומר את התבנית החדשה בבסיס הנתונים
-            _context.TblTemplate.Add(template);
+            // שומר את כל התבניות בבסיס הנתונים
+            _context.TblTemplate.AddRange(templates);
             await _context.SaveChangesAsync();
 
-            // מחזיר את התבנית החדשה ברשימה
-            return new List<TblTemplate> { template };
+            return templates; // מחזיר את כל התבניות שנוצרו
         }
         //return res;
 

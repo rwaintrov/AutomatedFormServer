@@ -9,10 +9,12 @@ namespace AutomatedForm.Api
     {
         public ApiMappingProfile()
         {
-            CreateMap<BranchPostModel, TblBranch>().ReverseMap();
-            CreateMap<MuniPostModel, TblMuni>().ReverseMap();
-            CreateMap<FactoryPostModel, TblFactory>().ReverseMap();
-            CreateMap<MuniFactoryPostModel, TransMuniFactory>().ReverseMap();
+            CreateMap<BranchPostModel, Models.TblBranch>().ReverseMap();
+            CreateMap<MuniPostModel, Models.TblMuni>().ReverseMap();
+            CreateMap<FactoryPostModel, Models.TblFactory>().ReverseMap();
+            CreateMap<MuniFactoryPostModel, Models.TransMuniFactory>().ReverseMap();
+            CreateMap<MuniLabPostModel, Models.TransMuniLab>().ReverseMap();
+            CreateMap<LaboratoryPostModel, Models.TblLaboratory>().ReverseMap();
         }
     }
 }

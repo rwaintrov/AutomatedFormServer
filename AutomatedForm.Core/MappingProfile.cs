@@ -19,6 +19,8 @@ namespace AutomatedForm.Core
             CreateMap<MuniDTO, TblMuni>().ReverseMap();
             CreateMap<FactoryDTO, TblFactory>().ReverseMap();
             CreateMap<MuniFactoryDTO, TransMuniFactory>().ReverseMap();
+            CreateMap<MuniLabDTO, TransMuniLab>().ReverseMap();
+            CreateMap<LaboratoryDTO, TblLaboratory>().ReverseMap();
         }
     }
 }

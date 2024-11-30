@@ -25,8 +25,18 @@ builder.Services.AddScoped<ITblFactoryRepository, TblFactoryRepository>();
 builder.Services.AddScoped<ITblFactoryService, FactoryService>();
 builder.Services.AddScoped<ITransMuniFactoryRepository, TransMuniFactoryRepository>();
 builder.Services.AddScoped<ITransMuniFactoryService, MuniFactoryService>();
+
+
+builder.Services.AddScoped<ITransMuniLabRepository, TransMuniLabRepository>();
+builder.Services.AddScoped<ITransMuniLabService, MuniLabService>();
+
+
 builder.Services.AddTransient<ITblTemplateRepository, TblTemplateRepository>();
 builder.Services.AddTransient<ITblTemplateService, TemplateService>();
+
+
+builder.Services.AddScoped<ITblLaboratoryRepository, TblLaboratoryRepository>();
+builder.Services.AddScoped<ITblLaboratoryService, LaboratoryService>();
 
 builder.Services.AddDbContext<DataContext>();
 

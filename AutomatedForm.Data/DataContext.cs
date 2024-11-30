@@ -19,6 +19,8 @@ namespace AutomatedForm.Data
         public DbSet<TblFactory> TblFactory { get; set; }
         public DbSet<TransMuniFactory> TransMuniFactory { get; set; }
 
+        public DbSet<TransMuniLab> TransMuniLab { get; set; }
+        public DbSet<TblLaboratory> TblLaboratory { get; set; }
 
 
 
@@ -50,7 +52,18 @@ modelBuilder.Entity<TransMuniFactory>()
 
 
 
+modelBuilder.Entity<TransMuniLab>()
+                                      .HasKey(pe => new { pe.TransId, });
+            base.OnModelCreating(modelBuilder);
 
+            
+            
+            
+            
+            
+            modelBuilder.Entity<TblLaboratory>()
+             .HasKey(pe => new { pe.LabId, });
+            base.OnModelCreating(modelBuilder);
 
 
 

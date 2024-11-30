@@ -1,13 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace AutomatedForm.Core.Models;
+namespace AutomatedForm.Api.Models;
 
 public partial class TblTemplate
 {
-    [Key]
     public int TemplateId { get; set; }
 
     public int? MuniId { get; set; }

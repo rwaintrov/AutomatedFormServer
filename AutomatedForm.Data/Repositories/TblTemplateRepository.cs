@@ -14,21 +14,24 @@ namespace AutomatedForm.Data.Repositories
     {
         private readonly DataContext _context;
         private readonly ITransMuniFactoryRepository _transMuniFactoryRepository;
+        private readonly ITransMuniLabRepository _transMuniLabRepository;
 
         public TblTemplateRepository(DataContext context,
-            ITransMuniFactoryRepository transMuniFactoryRepository
+            ITransMuniFactoryRepository transMuniFactoryRepository, ITransMuniLabRepository transMuniLabRepository
             )
         {
             _context = context;
             _transMuniFactoryRepository = transMuniFactoryRepository;
+            _transMuniLabRepository = transMuniLabRepository;
         }
 
 
  
 public async Task<IEnumerable<TblTemplate>> ReturnWithActions(int muniId)
         {
-            int templateId = 20;
+            //int templateId = 40;
             var factories = await _transMuniFactoryRepository.GetFactoriesByMuniIdAsync(muniId);
+            var lab = await _transMuniLabRepository.GetLabByMuniIdAsync(muniId);
 
             if (factories == null || !factories.Any())
             {
@@ -37,13 +40,13 @@ public async Task<IEnumerable<TblTemplate>> ReturnWithActions(int muniId)
 
             var templates = factories.Select(factory => new TblTemplate
             {
-                TemplateId = ++templateId, // ניתן לשנות אם לכל תבנית נדרש מזהה ייחודי
                 MuniId = muniId,
                 TemplateName = "תבנית עם פרטי מפעל",
                 TemplateJson = JsonConvert.SerializeObject(new
                 {
                     Factory = factory.FactoryName,
-                    Address = factory.FactoryAddress // מניח שלמפעל יש שדה כתובת
+                    Address = factory.FactoryAddress,
+                    LabName = lab.LabName,
                 }),
                 IsActive = true,
                 IsDeleted = false

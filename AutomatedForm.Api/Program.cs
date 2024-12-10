@@ -43,7 +43,7 @@ builder.Services.AddDbContext<DataContext>();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAngularApp",
-        policy => policy.WithOrigins("http://localhost:52523") // כתובת האפליקציה של Angular
+        policy => policy.WithOrigins( "http://localhost:4200") // כתובת האפליקציה של Angular
                         .AllowAnyMethod()
                         .AllowAnyHeader());
 });
